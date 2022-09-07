@@ -1,0 +1,6 @@
+nltk
+docopt
+tqdm
+sentencepiece
+sacrebleu
+torch
