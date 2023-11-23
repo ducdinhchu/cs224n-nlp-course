@@ -1,329 +1,332 @@
-In this lesson, you'll get to learn why you should fine-tune, what 
-fine-tuning really even is, compare it to 
-prompt engineering, and go through a lab where you get to 
-compare a fine-tuned model to a non-fine-tuned model. 
+In this lesson, you'll learn about where fine-tuning really 
+fits into the training process. 
+It comes after a step called pre-training, which you'll go 
+into a little bit of detail on, and then you'll get to learn about all the 
+different tasks you get to apply fine-tuning to. 
  
-Cool, let's get started! 
-Alright, so why should you fine-tune LLMs? 
-Well before we jump into why, let's talk about what fine-tuning really 
-is. 
-So what fine-tuning is, is taking these general purpose 
-models like GPT-3 and specializing them into something 
-like ChatGPT, 
-the specific chat use case to make it chat well, or using GPT-4 
-and turning that into a specialized GitHub co-pilot use 
-case to auto-complete code. 
-An analogy I like to make is a PCP, a primary care physician, 
-is like your general purpose model. 
-You go to your PCP every year for a general checkup, 
-but a fine-tune or specialized model is like a cardiologist or dermatologist, 
-a doctor that has a specific specialty and can actually 
-take care of your heart problems or skin problems in much more 
-depth. 
-So what fine tuning actually does for your 
-model is that it makes it possible for 
-you to give it a lot more data than what fits into 
-the prompt so that your model can learn 
-from that data rather than just get access to it, 
-from that learning process is able to upgrade itself from that PCP 
-into something more specialized like a dermatologist. 
-So you can see in this figure you might have some symptoms 
-that you input into the model like skin irritation, 
-redness, itching, and the base model 
-which is the general purpose model might just 
-say this is probably acne. 
-A model that is fine-tuned on dermatology data however 
-might take in the same symptoms and be 
-able to give you a much clearer, more specific diagnosis. 
-In addition to learning new information, fine-tuning can also help 
-steer the model to more consistent outputs or more 
-consistent behavior. 
-For example, you can see the base model here. 
-When you ask it, what's your first name? 
-It might respond with, what's your last name? 
-Because it's seen so much survey data out there of different questions. 
+Alright, let's continue. 
+Alright, let's see where fine-tuning fits in. 
+First, let's take a look at pre-training. 
+This is the first step before fine-tuning even happens, and 
+it actually takes a model at the start that's completely 
+random. 
+It has no knowledge about the world at all. 
+So all its weights, if you're familiar with weights, are 
+completely random. 
+It cannot form English words at all. 
+It doesn't have language skills yet. 
+And the learning objective it has is next token prediction, 
+or really, in a simplified sense, it's 
+just the next word prediction here. So you see the word wants, and 
+so we want it to now predict the word upon, But 
+then you see the LLM just producing "sd!!!@". 
+So just really far from the word upon, so that's where it's starting. 
+But it's taking in and reading from a giant corpus of data, often 
+scraped from the entire web. 
+We often call this unlabeled because it's not something that we've structured 
+together. We've just scraped it from the web. 
+I will say it has gone through many, many cleaning processes, 
+So there is still a lot of manual work to 
+getting this data set to be effective for model pre-training. 
+And this is often called self-supervised learning because the 
+model is essentially supervising itself with 
+next token prediction. 
+All it has to do is predict the next word. 
+There aren't really labels otherwise. 
+Now, after training, here you see that the model is now 
+able to predict the word upon, or the token upon. 
+And it's learned language. 
+It's learned a bunch of knowledge from the internet. So 
+this is fantastic that this process actually works 
+in this way and it's amazing because all it is is 
+just trying to predict the next token and it's reading the 
+entire Internet's worth of data to do so. 
+Now okay maybe there's an asterisk on entire 
+Internet data and data scraped from the entire 
+Internet. 
+The actual understanding and knowledge behind this is 
+often not very public. 
+People don't really know exactly what that data set looks like for a lot 
+of the closed source models from large companies. But 
+there's been an amazing open source effort by EleutherAI to 
+create a dataset called The Pile, which you'll get to 
+explore in this lab. 
+And what it is, is that it's a set of 22 
+diverse datasets scraped from the entire internet. 
+Here you can see in this figure, you know, there's 
+a four score and seven years. So that's a Lincoln's Gettysburg address. 
  
-So it doesn't even know that it's supposed to answer that question. 
-But a fine-tuned model by contrast, when you ask it, what's your 
-first name? 
-would be able to respond clearly. 
-My first name is Sharon. 
-This bot was probably trained on me. 
-In addition to steering the model to more 
-consistent outputs or behavior, fine tuning can help 
-the model reduce hallucinations, which is a common problem 
-where the model makes stuff up. 
-Maybe it will say my first name is Bob when this was 
-trained on my data and my name is definitely not Bob. 
-Overall, fine tuning enables you to customize the model 
-to a specific use case. 
-In the fine-tuning process, which we'll go 
-into far more detail later, it's actually very 
-similar to the model's earlier training recipe. 
-So now to compare it with something that you're 
-probably a little bit more familiar with, which 
-is prompt engineering. 
-This is something that you've already been doing for a while 
-with large language models, but maybe even for over the 
-past decade with Google, which is just putting a query in, editing 
-the query to change the results that you see. 
-So there are a lot of pros to prompting. 
-One is that you really don't need any data to get started. 
-You can just start chatting with the model. 
-There's a smaller upfront cost, so you don't really 
-need to think about cost, since every single time you ping 
-the model, it's not that expensive. 
-And you don't really need technical knowledge to get started. 
-You just need to know how to send a text message. 
-What's cool is that there are now methods you can use, such 
-as retrieval augmented generation, or RAG, to 
-connect more of your data to it, to selectively choose what kind of data 
-goes into the prompt. 
-Now of course, if you have more than a little bit of data, 
-then it might not fit into the prompt. 
-So you can't use that much data. 
-Oftentimes when you do try to fit in a ton of data, 
-unfortunately it will forget a lot of that data. 
-There are issues with hallucination, which is when the model 
-does make stuff up and it's hard to correct that 
-incorrect information that it's already learned. So while using retrieval augmented 
-generation can be great to connect your data, it will 
-also often miss the right data,get the incorrect data and cause the 
-model, to output the wrong thing. 
-Fine tuning is kind of the opposite of prompting. 
-So you can actually fit in almost an 
-unlimited amount of data, which is nice because 
-the model gets to learn new information on that data. 
-As a result, you can correct that incorrect information that it 
-may have learned before, or even put in 
-recent information that it hadn't learned about previously. 
-There's less cost afterwards if you do fine-tune a 
-smaller model and this is particularly relevant if 
-you expect to hit the model a lot of times. So have 
-a lot of either throughput or you expect 
-it to just handle a larger load. 
-And also retrieval augmented generation can 
-be used here too. I think sometimes people think it's 
-a separate thing but actually you can use 
-it for both cases. 
-So you can actually connect it with far more data 
-as well even after it's learned all this information. 
-There are cons, however. 
-You need more data, and that data has to 
-be higher quality to get started. 
-There is an upfront compute cost as well, so it's 
-not free necessarily. 
-It's not just a couple dollars just to get started. 
-Of course, there are now free tools out there to get started, 
-but there is compute involved in making this happen, 
-far more than just prompting. 
-And oftentimes you need some technical 
-knowledge to get the data in the right place, and that's 
-especially, you know, surrounding this data piece. 
-And, you know, there are more and more tools now that's 
-making this far easier, but you still need some 
-understanding of that data. 
-And you don't have to be just anyone who can send 
-a text message necessarily. 
-So finally, what that means is for prompting, 
-you know, that's great for generic use cases. 
-It's great for different side projects and prototypes. 
-It's great to just get started really, really 
-fast. 
-Meanwhile, fine tuning is great for more enterprise or domain-specific 
-use cases, and for production usage. 
-And we'll also talk about how it's useful for privacy in this 
-next section, which is the benefits of fine-tuning your own 
-LLM. So if you have your own LLM that 
-you fine-tuned, one benefit you get is around performance. 
+There's also Lincoln's carrot cake recipe. 
+And of course, also scraped from PubMed, there's 
+information about different medical texts. 
+And finally, there's also code in here from GitHub. 
+So it's a set of pretty intellectual datasets that's curated 
+together to actually infuse these models 
+with knowledge. 
+Now this pre-training step is pretty expensive and time-consuming, it's actually 
+expensive because it's so time-consuming to have the model 
+go through all of this data, go from absolutely randomness to 
+understanding some of these texts, you 
+know, putting together a carrot cake recipe while also 
+writing code while also knowing about medicine in the 
+Gettysburg Address. 
+Okay, so these pre-trained base models are great 
+and there are actually a lot of them 
+that are open source out there, but you know, 
+it's been trained on these data sets from the web and it might 
+have this geography homework you might see here 
+on the left where it asks what's the. 
+What's the capital of Kenya? 
+What's the capital of France? 
+And it all, you know, in a line without seeing the answers. 
+So when you then input, what's the capital of Mexico, the 
+L line might just say, what's the capital of Hungary? 
+As you can see that it's not really useful from the 
+sense of a chatbot interface. 
+So how do you get it to that chatbot interface? 
+Well, fine tuning is one of those ways to get you there. 
+And it should be really a tool in your toolbox. 
+So pre-training is really that first step that gets you 
+that base model. 
+And when you add more data in, not actually as much data, 
+you can use fine-tuning to get a fine-tuned model. 
+And actually, even a fine-tuned model, you 
+can continue adding fine-tuning steps afterwards. 
+So fine-tuning really is a step afterwards. 
+You can use the same type of data. You can actually 
+probably scrape data from different sources 
+and curate it together, which you'll take a look at in a little bit. 
+So that can be this quote unquote unlabeled data, 
+But you can also curate data yourself to 
+make it much more structured for the model 
+to learn about. 
+And I think one thing that's key that differentiates fine-tuning from 
+pre-training is that there's much less data 
+needed. 
+You're building off of this base model that has 
+already learned so much knowledge and basic language 
+skills that you're really just taking it to 
+the next level. 
+You don't need as much data. 
+So this really is a tool in your toolbox. 
+And if you're coming from other machine learning areas, you 
+know, that's fine tuning for discriminative tasks, maybe you're 
+working with images and you've been fine-tuning on 
+ImageNet, you'll find that the definition for 
+fine-tuning here is a little bit more loose and it's not as 
+well defined for generative tasks because we are actually updating the 
+weights of the entire model, not 
+just part of it, which is often the case for fine-tuning those 
+other types of models. 
  
-So this can stop the LLM from making stuff up, 
-especially around your domain. 
-It can have far more expertise in that domain. 
-It can be far more consistent. 
-So sometimes these models will just produce, you know, 
-something really great today, but then tomorrow you hit it and it 
-isn't consistent anymore. 
-It's not giving you that great output anymore. 
-And so this is one way to actually make it 
-far more consistent and reliable. 
-And you can also have it be better at moderating. If you've 
-played a lot with ChatGPT, you might have seen ChatGPT say, I'm sorry, 
-I can't respond to that. 
-And you can actually get it to say the same 
-thing or something different that's related to your company or 
-use case to help the person chatting with it, stay 
-on track. 
-And again, so now I want to touch on privacy. 
-When you fine tune your own LLM, this can happen in your VPC or on 
-premise. 
-This prevents data leakage and data breaches that 
-might happen on off the shelf, third party solutions. 
-And so this is one way to keep that data safe that you've 
-been collecting for a while that might be the last few days, 
-it might be the last couple decades as well. 
-Another reason you might want to fine tune your own LLM is 
-around cost, so one is just cost transparency. 
-You maybe you have a lot of people using your model and 
-you actually want to lower the cost per request. 
-Then fine tuning a smaller LLM can actually 
-help you do that. 
-And overall, you have greater control 
-over costs and a couple other factors as well. 
-That includes uptime and also latency. 
-You can greatly reduce the latency for certain applications 
-like autocomplete. 
-You might need latency that is sub 200 
-milliseconds so that it is not perceivable by 
-the person doing autocomplete. 
-You probably don't want autocomplete to happen 
-across 30 seconds, which is currently the case with 
-running GPD 4 sometimes. 
-And finally, in moderation, we talked about that 
-a little bit here already. 
-But basically, if you want the model to say, I'm 
-sorry to certain things, or to say, I don't know 
-to certain things, or even to have a custom response, This is 
-one way to actually provide those guardrails to 
-the model. 
-And what's really cool is you're actually get to see an example of 
-that in the notebooks. 
-All right. 
-So across all of these different labs, you'll be using a lot of 
-different technologies to fine tune. 
-So there are three Python libraries. 
-One is PyTorch developed by Meta. 
-This is the lowest level interface that you'll see. 
-And then there's a great library by HuggingFace on top of PyTorch and 
-a of the great work that's been done and it's much higher 
-level. 
-You can import datasets and train models very easily. 
-And then finally, you'll see the Llamanai library, which 
-I've been developing with my team. 
-And we call it the llama library for 
-all the great llamas out there. 
-And this is an even higher level interface 
-where you can train models with just three 
-lines of code. 
-All right. 
-So let's hop over to the notebooks and see some fine-tuned models 
-in action. 
-Okay, so we're going to compare a fine-tuned model 
-with a non-fine-tuned model. 
-So first we're importing from the LLAMA library, again 
-this is from LAMANI, the basic model runner. 
-And all this class does is it helps us run open-source 
-models. 
-So these are hosted open-source models on GPUs to 
-run them really efficiently. 
-And the first model you can run here is the LLAMA2 model, 
-which is very popular right now. 
-And this one is not fine-tuned. 
-So we're gonna just instantiate it based on this is its hugging 
-face name and we're gonna say. 
-Tell me how to train my dog to sit. 
-So it's just you know, really really simple here into 
-the non fine-tuned model we're gonna get the output out and. Let's print non 
-tuned. 
-Output and see oof. 
-Okay. 
-So we asked it. 
-Tell me how to train my dog to sit. 
-It said period, and then tell me how to train my dog to say, 
-tell me how to teach my dog to come, tell me how to get my dog to heel. 
-So clearly this is very similar to the what's 
-your first name, what's your last name answer. 
-This model has not been told or trained 
-to actually respond to that command. 
-So maybe a bit of a disaster, but let's keep looking. 
-So maybe we can ask it, what do you think of Mars? 
-So now, you know, at least it's responding to the question, but 
-it's not great responses. 
-I think it's a great planet. 
-I think it's a good planet. 
-I think it'll be a great planet. 
-So it keeps going. 
-Very philosophical, potentially even existential, 
-if you keep reading. 
-All right. 
-What about something like a Google search query, 
-like Taylor Swift's best friend? 
-Let's see what that actually says. 
-All right. 
-Well, it doesn't quite get Taylor Swift's best 
-friend, but it did say that it's a huge 
-Taylor Swift fan. 
-All right, let's keep exploring maybe something that's a 
-conversation to see if it can do turns in a 
-conversation like chat GPT. 
-So this is an agent for an Amazon delivery order. 
-Okay, so at least it's doing the different customer 
-agent turns here, but it isn't quite 
-getting anything out of it. This is not something usable for 
-any kind of like fake turns or help 
-with making an auto agent. 
-All right, so you've seen enough of that. 
-Let's actually compare this to Llama 2 that has been fine-tuned to 
-actually chat. 
-So I'm gonna instantiate the fine-tune model. 
-Notice that this name, all that's different is this chat here. 
-And then I'm gonna let this fine-tune model do the same thing. 
-So tell me how to train my dog to sit. 
-I'm gonna print that. 
-Okay, very interesting. 
-So you can immediately tell a difference. 
-So tell me how to train my dog to sit. It's still trying to auto-complete that. 
- 
-So tell me how to train my dog to sit on command. 
-But then it actually goes through almost a step-by-step guide 
-of what to do to train my dog to sit. 
-Cool, so that's much, much better. 
-And the way to actually, quote unquote, 
-get rid of this extra auto-complete thing is actually to 
-inform the model that you want instructions. 
-So I'm actually putting these instruction tags here. 
-This was used for LLAMA2. 
-You can use something different when you fine-tune 
-your own model, but this helps with telling the model, hey, 
-these are my instructions and these are the boundaries. 
-I'm done with giving this instruction. 
-Stop continuing to give me an instruction. 
-So here you can see that it doesn't auto-complete that on-command thing. 
- 
-And just to compare, just to be fair, 
-we can see what the non-fine-tuned model actually says. 
-Great, it just repeats the same thing or something very similar. 
-Not quite right. 
-Cool, let's keep going down. So what do you think of Mars, this 
-model? 
-Oh, it's a fascinating planet. 
-It's captured the imagination of humans for centuries. 
-Okay, cool. 
-So something that's much better output here. 
-What about Taylor Swift's best friend? 
-Let's see how this does. 
-Okay, this one's pretty cute. 
-It has a few candidates for who Taylor Swift's 
-best friend actually is. 
-Let's take a look at these turns from the Amazon delivery agent. 
-Okay. 
-It says, I see. Can you provide me with your order number? 
-This is much, much better. 
-It's interesting because down here, it also summarizes what's going on, 
-which may or may not be something that you would want, 
-and that would be something you can fine tune away. 
-And now I'm curious what chat GPT would say for, tell 
-me how to train my dog to sit. 
-Okay. 
-So it gives different steps as well. 
+So we have the same training objective as pre-training 
+here for fine-tuning next token production. 
+And all we're doing is changing up the data so that it's more 
+structured in a way, and the model can be more consistent in 
+outputting and mimicking that structure. 
+And also there are more advanced ways to 
+reduce how much you want to update this model, and we'll 
+discuss this a bit later. 
+So exactly what is fine-tuning doing for you? 
+So you're getting a sense of what it is right now, but 
+what are the different tasks you you can 
+actually do with it? 
+Well, one giant category I like to think about 
+is just behavior change. You're changing the behavior of the model. 
+You're telling it exactly, you know, in this chat interface, we're in 
+a chat setting right now. We're not looking at a survey. 
+So this results in the model being able 
+to respond much more consistently. 
+It means the model can focus better. 
+Maybe that could be better for moderation, for example. 
+And it's also generally just teasing out its capabilities. 
+So here it's better at conversation so that it can now talk about a wide 
+variety of things versus 
+before we would have to do a lot of prompt engineering in 
+order to tease that information out. 
+Fine tuning can also help the model gain 
+new knowledge and so this might be around 
+specific topics that are not in that base pre-trained model. 
+This might mean correcting old incorrect 
+information so maybe there's you know more updated 
+recent information that you want the model to 
+actually be infused with. 
+And of course more commonly you're doing both with these models, so 
+oftentimes you're changing the behavior and you 
+want it to gain new knowledge. 
+So taking it a notch down, so tasks for fine-tuning, it's really 
+just text in, text out for LLMs. And I 
+like to think about it in two different categories, so 
+you can think about it one as extracting text, so you 
+put text in and you get less text out. So a 
+lot of the work is in reading, and this could be extracting keywords, topics, it 
+might be routing, based on all the data that you 
+see coming in. You route the chat, for example, to some 
+API or otherwise. 
+Different agents are here, like different agent capabilities. 
+And then that's in contrast to expansion. 
+So that's where you put text in, and you get more text out. 
+So I like to think of that as writing. 
+And so that could be chatting, writing emails, writing code, 
+and really understanding your task exactly, 
+the difference between these two different tasks, 
+or maybe you have multiple tasks that you want to fine-tune 
+on is what I've found to be the clearest indicator of success. 
+So if you want to succeed at fine-tuning the model, it's getting 
+clearer on what task you want to do. 
+And clarity really means knowing what 
+good output looks like, what bad output looks like, 
+but also what better output looks like. 
+So when you know that something is doing 
+better at writing code or doing better at routing a task, 
+that actually does help you actually fine-tune 
+this model to do really well. 
+Alright, so if this is your first time fine-tuning, 
+I recommend a few different steps. 
+So first, identify a task by just prompt engineering a 
+large LLM and that could be chat GPT, for example, 
+and so you're just playing with chat GPT 
+like you normally do. 
+And you find some, you know, tasks that it's doing okay at, so 
+not not great, but like not horrible either, so 
+you know that it's possible within the realm of possibility, but 
+it's not it's not the best and you want it to much better 
+for your task. 
+So pick that one task and just pick one. 
+And then number four, get some inputs and 
+outputs for that task. So you put in some text 
+and you got some text out, get inputs where you 
+put in text and get text out and outputs, 
+pairs of those for this task. 
+And one of the golden numbers I like to use 
+is 1000 because I found that that is a good 
+starting point for the amount of data that you need. 
+And make sure that these inputs and outputs 
+are better than the okay result from that LLM before. 
+You can't just generate these outputs necessarily all the time. 
+And so make sure you have those pairs of data and you'll 
+explore this in the lab too, this whole pipeline here. 
+Start out with that and then what you do is 
+you can then fine tune a small LLM on this 
+data just to get a sense of that performance bump. 
+And then so this is only if you're a first time, this 
+is what I recommend. 
+So now let's jump into the lab where you 
+get to explore the data set that was used for pre-training versus 
+for fine-tuning, so you understand exactly what these 
+input- output pairs look like. 
+Okay, so we're going to get started by importing a few different 
+libraries, so we're just going to run that. 
+And the first library that we're going to use is 
+the datasets library from. HuggingFace, and they have this great 
+function called loadDataset where you can just pull 
+a dataset from on their hub and be able to run it. 
+So here I'm going to pull the pre-training dataset called the pile that 
+you just saw a little bit more about and here I'm just grabbing 
+the split which is train versus test and 
+very specifically I'm actually grabbing streaming equals true because 
+this data set is massive we can't download it 
+without breaking this new book so I'm 
+actually going to stream it in one at a 
+time so that we can explore the different pieces of data in 
+there. 
+So just loading that up and now I'm going to just look at 
+the first five so this. 
+It's just using iter tools. 
 Great. 
-Alright, feel free to use ChatGPT or any other 
-model to see what else they can each 
-do and compare the results. But it's pretty clear, I think, that 
-the ones that have been fine-tuned, including ChatGPT and this Lama2Chat 
-LLM, they're clearly better than the one that was 
-not fine-tuned. 
-Now in the next lesson, we're going to see where fine-tuning fits 
-in in the whole training process. 
-So you'll get to see the first step and how to even 
-get here with this fine-tuned model.
+Ok, so you can see here, in the pre-trained data set, there's a 
+lot of data here that looks kind of scraped. 
+So this text says, it is done and submitted. 
+You can play Survival of the Tastiest on Android. 
+And so that's one example. 
+And let's see if we can find another one here. 
+Here is another one. 
+So this is just code that was scraped, XML code that was scraped. So that's 
+another data point. 
+You'll see article content, you'll see this topic about Amazon 
+announcing a new service on AWS, and then here's about Grand 
+Slam Fishing Charter, which is a family business. 
+So this is just a hodgepodge of different data sets scraped from 
+essentially the internet. 
+And I kind of want to contrast that with fine-tuning 
+data set that you'll be using across the different labs. 
+We're grabbing a company data set of question-answer pairs, you know, 
+scraped from an FAQ and also put together about internal engineering 
+documentation. 
+And it's called Lamini Docs, it's about the company Lamini. 
+And so we're just going to read that JSON file and take a look at 
+what's in there. 
+Okay, so this is much more structured data, 
+right? So there are question-answer pairs here, and it's very 
+specific about this company. 
+So the simplest way to use this data 
+set is to concatenate actually these questions and 
+answers together and serve that up into the model. 
+So that's what I'm going to do here. I'm going to turn that into a dict 
+and then I'm going to see what actually concatenating one 
+of these looks like. 
+So, you know, just concatenating the question and directly 
+just giving the answer after it right here. 
+And of course you can prepare your data in any way possible. 
+I just want to call out a few different common ways of 
+formatting your data and structuring it. 
+So question answer pairs, but then also 
+instruction and response pairs, input output pairs, 
+just being very generic here. 
+And also, you can actually just have it, 
+since we're concatenating it anyways, it's just 
+text that you saw above with the pile. 
+All right, so concatenating it, that's very simple, but 
+sometimes that is enough to see results, sometimes 
+it isn't. 
+So you'll still find that the model might need just more structure 
+to help with it, and this is very similar 
+to prompt engineering, actually. 
+So taking things a bit further, you can also process your data 
+with an instruction following, in this case, question-answering 
+prompt template. 
+And here's a common template. 
+Note that there's a pound-pound-pound before the question type of marker 
+so that that can be easily used as structure to tell the 
+model to expect what's next. 
+It expects a question after it sees that for the question. 
+And it also can help you post-process the model's outputs 
+even after it's been fine-tuned. 
+So we have that there. 
+So let's take a look at this prompt template in 
+action and see how that differs from the 
+concatenated question and answer. 
+So here you can see how that's how the prompt template 
+is with the question and answer neatly done 
+there. 
+And often it helps to keep the input 
+and output separate so I'm actually going to take 
+out that answer here and keep them separated 
+out because this helps us just using the 
+data set easily for evaluation and for you 
+know when you split the data set into 
+train and test. 
+So now what I'm gonna do is put all of this, apply 
+all of this template to the entire data set. 
+So just running a for loop over it and just hydrating the prompt. 
+So that is just adding that question and 
+answer into this with F string or dot 
+format stuff here with Python. 
+All right, so let's take a look at the difference between that text-only thing 
+and the question-answer format. 
+Cool. 
+So it's just text-only, it's all concatenated here that you're putting in, and 
+here is just question-answer, much more structured. 
+ 
+And you can use either one, but of course I 
+do recommend structuring it to help with evaluation. 
+That is basically it. 
+The most common way of storing this data 
+is usually in JSON lines files, so "jsonl files.jsonl." 
+It's basically just, you know, each line is a JSON object and that's it, 
+and so just writing that to file there. 
+You can also upload this data set onto HuggingFace, 
+shown here, because you'll get to use this later 
+as well and you'll get to pull it from the 
+cloud like that. 
+Next, you'll dive into a specific variant of fine-tuning called 
