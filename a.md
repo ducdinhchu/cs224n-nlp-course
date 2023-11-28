@@ -1,153 +1,186 @@
 Welcome back.
-In the previous task, we've been experimenting with key
-concepts of OpenAI API, to test and understand how the OpenAI
-model works.
+In the previous task, we have been programmatically prompting
+an OpenAI model, writing a Python script using OpenAI API,
+and if you have chosen to complete the optional practice
+activity, you have further practice programmatic
+prompting, generating a list of a movie cast members using
+the zero shot and few shot approaches.
+In this task, we are going to start applying programmatic
+prompting to our web app using OpenAI data to enrich
+the movie collection.
+This guided project will give you skills to incorporate OpenAI
+in your apps for a variety of objectives.
 In this task,
-we're going to prompt programmatically OpenAI to generate
-a response through a simple Python script to prompt the OpenAI
-model through the OpenAI API.
-Let's go back to Visual Studio Code.
-We're going to create a new file,
-so we'll click "file", "new file" and this time we're going
-to select a "Python file", then we're going to save it,
-so we'll click "file> save as" and we'll save it right away
-calling it prompt.py and we'll save it in the working folder.
-Then click save.
-We're going to write a Python script that we can execute, we can run
-it through the command prompt, so that we'll programmatically
-prompt the OpenAI API model.
-Let's see how to build such a file.
-First, we're going to import OS so that we can retrieve
-the API key from the environment variable.
-Then we're going to add OpenAI,
-so we'll import openai  so that we can use the API, then
-from the dotenv ibrary, we're going to import the load_dotenv
-method so that we can retrieve the API key
-from the environment variable.
-We'll run the, um we'll insert the function load_dotenv
-and then we're going to pass to openai the API key
-retrieving it from the environment variable.
-So we're going to getenv, and we'll get it from the
-environment variable
-OPENAI_API_KEY
-So this way we have passed the API key to OpenAI so that we
-can use it to prompt programmatically the model.
-Now we're going to create an object, a response object using
-the openai.completion.Create method from the OpenAI API.
-So this will create the completion to a prompt and we need
-to pass a few parameters,
-two of them are mandatory:
-what model do we want to use and what is the actual prompt.
-So we're going to start with model and we use the text davinci.
-So text-davinci-003, we'll insert
-the parameters comma separated,
-so we're going to add the prompt now.
-So we'll write in "prompt=" and we're going to write,
-"write the plot of the movie Close Encounters of the third
-kind". And we're going to limit the response by saying "in no
-more than 100 words" just like we did on the playground.
-So comma again and we're going to add another parameter.
-So model and prompt are the two mandatory parameters.
-There's a few parameters that the API will use that have
-a default value.
-So in this guided project, we're going to use only
-"temperature" as we have seen already in the playground,
-to modulate the response. The default value is 1,
-so we're going to use the default value for now. The other
-parameter we're going to use is max_tokens.
-So this will establish what is the maximum number of tokens
-that we can use between the prompt and the response.
-We're going to use
-the often-used value of 256 for now. In your Chrome browser,
-in the resources bookmarks folder, you'll find the resource
-that explains the tokens and how do they work,
-what are they and how to count them.
-This will explain how a token is a minimum unit of the API
-and it's more or less four characters in the English language.
-It will give you additional context and information,
-and there's even a tokenizer tool that can anticipate more
-or less how many
-tokens would you need for your prompt and response?
-Remember that the number of tokens is divided
-between the prompt and the response,
-so if you need 100 tokens for the length of the prompt
-and another 100 tokens for the length of the response,
-the maximum tokens should be 200, as we'll be using
-100 to write the prompt and 100 to get the response.
-Now we're going to add one last line so that we can print
-in our terminal or command prompt window, the response.
-So we have print (response),
-but as the response is constructed with an array of different
-choices, it can be one or more, so that the AI model
-will choose a few different responses, will create a few
-different responses to choose from,
-so we're going to call for the index zero in choices,
-so we can get the first choice.
-And in this case, it's the only choice.
-And then we use "text.strip" so that we can take the text
-from within the choices array. Great!
-Now, we can save with CTRL+S or CMD+S depending
-if you're using a PC or Mac keyboard and we can run
-this script in the command prompt.
-So we'll open the command prompt from the task bar
-at the bottom of your screen, of your cloud desktop screen,
-we're going to reach the "desktop" folder and the "working
-folder" you can use tab to complete.
-And here in the working folder, we're going to run the script
-Python prompt.py, we hit enter and after a few seconds,
-we'll receive the response from the AI model,
-and as you can see, it has generated the plot of the movie
-"Close Encounters of the third kind" and it's printed on screen.
-Let's use a little bit of prompt engineering.
-What we have done here is a "zero shot prompt".
-So we have created a prompt and we simply asked the AI model
-to generate the plot of the movie and it returns the
-generated plot.
-What if we want to provide a few examples for the AI
-to understand how do we want this plot to be written:
-that is called a "few shots" as opposed to "zero shots"
-that we have now. Pause the video and take a moment to read
-the response and see how it is constructed.
-The movie follows the story of the protagonist Roy Neary
-and he continues describing the movie. Resume the video when
-you're ready.
-So back to visual studio, I have edited the prompt, adding
-a couple of examples with specific mentions
-of one of the characters of the movie, Claude Lacombe, and his
-team of scientists trying to make contact with aliens. Feel
-free to pause the video to read the prompt fully and then
-resume when you're ready.
-I have changed also max tokens so that we accommodate
-for the longer prompt now.
-So I have increased the number of max tokens used by my
-response generation, and then back on the command prompt,
-let's see what the result of this prompt editing was.
-The prompt has generated a new plot, a new response,
-and this time, there's a specific mention of Claude Lacombe and
-his team of scientists.
-While in a number of different response generations,
-I have tried earlier, there was never a mention
-of this character and his mission to make contact with aliens
-for the first time.
-So providing a couple of examples has already changed
-the way the AI model is structuring the response.
-So this is the difference between a zero shot and a few shots
-approach. Calibrating the prompt and the examples
-will change the responses the way you need.
-Great. Now that we have created our first
-programmatic prompt,
-let's quickly review what we have covered in this task.
-So our key takeaways: import openai module to use the OpenAI
-API in Python; use the openai completion create function
-to generate the response; pass the mandatory model and prompt
-parameters; optional parameters will receive a default value
-if not otherwise specified by your request;
-the API request will generate a response.choices array
-with alternative responses to the submitted the prompt;
-a zero-shot approach will simply prompt the model;
-a few-shot approach will provide examples to guide
-the response. In the next task,
-we're going to have an optional ungraded practice activity.
-Feel free to take this recommended practice,
-otherwise you can move on to the following instructional task.
-See you there!
+we will take information from a JSON object containing
+the movie details, and use such information to prompt OpenAI
+for key movie info such as director, year of release
+and movie genre.
+Go back to visual studio, close all tabs, click "file > open
+folder",
+select working folder from your desktop and click "select
+folder".
+You don't need to save your word space configuration as
+a file. Prompt.py and prompt-practice.py come from our
+previous task and optional practice.
+Everything else makes up the flask web app, double click
+app.py to open it
+and let's briefly review the app.
+The templates folder contains the web UI template index.html,
+the static folder contains the JavaScript and CSS used
+by the app.
+Double click the script.js in the JS folder to open it.
+In this guided project scenario,
+you are at an early stage development of the web app
+with a simple UI written in HTML, CSS and Javascript.
+Within the javascript,
+we used Jquery to manipulate the interface and to communicate
+with the flask server's
+Rest API to pass on some details needed to build the OpenAI
+API request in the Python script and later use its response.
+Let's review the JavaScript file.
+While in the production environment, you may have a database,
+at this stage
+we have saved the user's movie collection information
+in an array of JSON objects within the JavaScript.
+In the second array of JSON objects, we have stored
+the details needed for each API request to the server, button-path
+defines the Jquery path to the button that when clicked
+will generate each request.
+The output div path defines the div where the response
+obtained by OpenAI will be written, and url defines the URL
+to which the request should be sent.
+This URL will be mapped into a Python flask endpoint.
+An endpoint is essentially an indicator of what logical unit
+of Python code should be executed when a certain URL
+is visited on the server.
+In the JavaScript, we also have three functions: addMoviesHTML
+will generate the web page by adding a row
+for each movie stored in the user's movie collection to index
+html, taking the details from the movies
+JSON. The getData function will build the Ajax server
+request that we will use to interact with our server's
+API. The OpenAI API request will be created by the Python
+script with the code contained by the relevant endpoint.
+The add Events function sets up listeners for click events
+defining what will happen when each button is clicked.
+For example, when a button such as  "show director"
+is clicked, the getData function is executed
+with the relevant request data for the button
+with the "director" class, sending a request to the server
+which is then mapped into the relevant endpoint in the Python
+script.
+The Python endpoint fires the OpenAI I API request
+and the response of the OpenAI request is finally returned
+to our JavaScript and written within the output div.
+Now that we have a good idea of how the app works,
+let's go back to the app.py file.
+Let's create an endpoint for the director request.
+So we're going to use the app get decorator and we're going
+to add the URL that we have specified for the request,
+api/get/director
+So we're creating a route to an endpoint so that the
+request is generated for the OpenAI API,
+when this URL is reached. We're going to add the cross
+origin as we're taking details from JSON
+so we need to use the CORS policy, and we're going to add
+a function, "get director" to build the OpenAI API request.
+First, we need to get the parameters coming from the request
+that we have sent to the server.
+So we're going to use reuest.args we're going to have args equal
+request.args so this way we're taking the arguments,
+we're taking the details coming from the request
+that we have sent to the server containing the details
+of the movie coming from our JSON file.
+We'll define "movie title" and it will be args.get "movie title" so
+that we take from the parameters specifically the movie title.
+Now that we have defined movie title, taken from the request
+parameters, we can start to write in a programmatic prompt
+to OpenAI API and we're going to store the prompt
+in a variable so that we can prepare it beforehand,
+and we will later use it into the OpenAI API request.
+So we say prompt = "give me the director of the movie"
+and we separate the instructions from content
+so we use quotation marks and then we'll add a string
+placeholder taking the movie title from the parameters sent
+through the server request,
+so this is coming from the JSON. "Give me the director
+of the movie {movie_title} and will be very specific
+with the prompt engineering,
+so it will say "give me just the full name with spaces
+in between where applicable but no other words, characters,
+symbols or punctuation".
+So we want to data enrich the movie collection, we want a straight
+answer just the name of the director,
+so we're being very specific with the prompting and then
+we'll use the format function to establish what to assign
+to this string placeholder,
+so we'll say "movie_title=movie_title" so that we're taking
+the parameter from the request arguments
+and now we can build the response object just like we did
+in the previous tasks.
+So we'll have response equal and we use the OpenAI
+completion create method to create a response.
+We need to pass on the mandatory parameter model
+and we're going to use again the text-davinci-003 model
+and we're going to pass on the prompt which we have prepared
+beforehand.
+So "prompt" will be equal to the prompt variable
+that we have created, and we're going to pass on a standard
+temperature of 1 for now.
+And we use max_tokens setting it at 64 as we need a short
+answer, the other parameters that are not mandatory, they
+will be set by default at the API defaults
+and we're going to return the response.
+So we're going to take the choices at index position
+zero and text strip so that we can return the response
+from this prompt. Pause the video and try creating the other
+endpoints:  one for the year and one for the movie genre
+and resume the video when you're done so that we can review
+it together.
+Let's review it together.
+Creating the other two endpoints will be almost identical
+to creating the director one.
+We're going to have a new decorator with the URL
+api/get/year and we'll define a function get_year where we
+change the prompt to "give me the year of release of the movie
+movie, just the year,
+no other words"
+And then we'll create the third endpoint with the URL
+api/get/genre
+we create and define a function
+get_genre with the "give me the genre of the movie and just
+the genre with spaces in between where applicable".
+So we edit the prompt here as well.
+But the three endpoints will be almost identical to one
+another.
+Feel free to pause the video to review the code and resume
+when you're ready.
+Make sure you save the code by pressing CTRL+S or CMD+S
+on your keyboard,
+depending if you're using PC or Mac, then open the command
+prompt, locate the "desktop > working folder" and then type in
+"flask run".
+This will start your Flask application and the local server.
+You can type in this address into your browser to see the app
+in action.
+And then by clicking "show director, "show year" or "show genre" you can
+see the result of your OpenAI API requests.
+After the test, you can go back to command prompt, press
+CTRL + C to stop the server and then exit.
+Let's review the key takeaways of this task.
+In this task we have been data enriching the movie collection
+prompting OpenAI with JSON data. Use your data to prompt
+the model, passing JSON properties to the prompt parameter of
+the openai.Completion.create
+API request; clearly separate the instructions from the
+passed content
+For example, what is the director of the movie?
+Placing the movie title in quotation marks and be specific in
+your prompt to generate clear and concise responses.
+For example, only specify the full name of the director.
+Do not add any other information. In the next task
+We're going to have an optional ungraded practice activity
+which is recommended for your practice.
+Otherwise you can continue to the following task, where we will
+start generating a plot programmatically.
+See you there.
