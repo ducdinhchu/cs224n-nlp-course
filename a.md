@@ -1,106 +1,85 @@
 Welcome back.
-In the previous task, we've been setting up the OpenAI API,
-creating the OpenAI account and an API key, setting up
-an environment variable, storing the API key and then
-calling the variable in the Python code.
-In this task, we're going to experiment with the key concepts
-of OpenAI. We're going to explore how the large language
-model works and how the temperature parameter influences
-prompt responses.
-We'll do so using the  OpenAI API Playground. On your cloud
-desktop, open a Chrome browser window and from "Resources"
-select the OpenAI playground. Make sure you're logged
-in with your OpenAI account as this will use some of your
-free trial credits for OpenAI API.
-On the right hand side from the mode dropdown menu, select
-"complete" OpenAI has different text generative models such
-as Ada, Curie or DaVinci, and different chat models such as GPT
-3.5 and GPT 4.
-We're going to use the DaVinci model as the latest text
-generation model, as opposed to a chat model.
-All of these OpenAI models are LLMs or Large Language
-Models.
-So how does a large language model work? To understand it,
-let's start with a simple prompt.
-We'll type in "write the plot of the movie the Goonies"
-and to limit the response, let's say "in 100 words" and then
-click "submit". The playground will send an API request
-through your account and generate a response.
-The minimum API usage unit is called "token", an OpenAI token
-roughly represents three or four characters.
-So to generate one average English language word, you will
-probably be using between one and two tokens. From the right hand
-side menu, scroll down to the bottom and select "full
-spectrum" from the "show probabilities" dropdown menu, then
-click the "regenerate" button to send the prompt again
-and generate a new response.
-This time, the response will be color coded, depending
-on the probability of each chosen word.
-This will help us understand how an LLM or large language
-model works.
-The model, trained with a very large data set, makes a decision
-for each sequence of characters, evaluating the probability
-that each sequence has to follow the previous sequence.
-With the playground
-full spectrum visualization, by clicking on each word,
-we'll be able to see the list of top alternatives
-and the relevant probability calculation. In green, you
-will see the instances in which a very high probability
-option has been chosen.
-For example, "group" has the top probability of 98.19%
-In yellow and red,
-the mid and bottom probability options, for example, "living"
-the top option here was "from" but "living" was a bottom
-option or "treasures" where the top probability option was
-"labyrinth".
-There are different parameters to change the way the response
-is generated and how the model operates
-a choice between different options.
-We will consider only one parameter in this project:
-temperature.
-The default value of temperature is 1.
-Let's try to increase it to 2
-and let's see what will happen.
-We click the "regenerate" button, send the prompt again
-and generate a new response.
-As you can see, this is fairly nonsensical: Mcode junior high
-group really doesn't have anything to do with the Goonies
-and doesn't really much make any sense.
-We even have some sequence of characters such as "SgmuIl" that are
-completely nonsense. As you notice with the color coding,
-pretty much all of the options of this response have a red
-color. So the model has been choosing always the bottom
-probability options.
-What will happen instead if we decrease the temperature
-and we bring it close to zero. We'll regenerate the response.
-and you'll notice that most of the responses are green
-or green-yellow.
-So the model has been choosing the highest probability
-options. Let's try regenerating again.
-It's almost the same response.
-So decreasing, the temperature will bring the probabilistic
-model close to "almost deterministic".
-You will almost have always the same response
-every time you prompt the model. The higher the temperature,
-the wilder the model will be in producing the response,
-generating many nonsensical phrases.
-This is very helpful to get a clear understanding of how
-the model works.
-and what does it really mean to generate text with OpenAI,
-so that we'll know how to use the temperature parameter
-when we want to calibrate our response.
-Let's briefly review what we have learned in this task:
-you can use the API playground to test the API,
-before you write your code;
-a large language model generates responses based
-on the probability each character sequence has to follow
-the previous one;
-each token (the minimum billable character sequence generated
-by the API) is generally made of 3-4 characters;
-temperature is the parameter used to calibrate
-how largely probabilistic or close to deterministic
-the model's response must be. In the next task
-we will start writing a simple Python script to prompt
-programmatically OpenAI through the API and generate
-a response.
+In the previous task, we have learned how to programmatically
+prompt the OpenAI model using the API.
+This is an optional and ungraded practice activity.
+The goal is really just to check your understanding.
+In this practice activity, you will demonstrate your ability
+to prompt OpenAI text models via Python and OpenAI API.
+Create a new Python script and write an OpenAI request,
+choosing the text-davinci-003 model, create the prompt
+of your choice,
+for example "list the main cast of the movie Batman by Tim
+Burton", be specific and offer examples when applicable
+to improve the quality of the response.
+Here's a few things to note: import OpenAI module to use
+the OpenAI API,
+the only mandatory parameters are model and prompt.
+Use prompt engineering techniques to generate better
+responses.
+And remember to use your API key from your environment
+variable. As a pro tip, be descriptive and specific in your
+prompt.
+Provide examples to clarify what type of response you want
+to generate.
+So use the zero shot versus a few shot approach, and clearly
+separate the instructions from the content in your prompt.
+So when you're providing examples, use quotation marks
+to clearly separate the two.
+My advice for you is not to edit your previously created
+prompt.py file, but to write from scratch a new script just
+to practice, feel free to pause the video, start your
+practice now and you can reference back to this slide whenever
+you need.
+When you resume the video, we're going to review the practice
+activity together.
+Let's review the practice together.
+You can compare your result with mine.
+If you have used the example provided in the slide, maybe
+you have used this prompt:" list the main cast of the movie
+Batman by Tim Burton".
+So I have created a prompt-practice.py file,
+I have imported os, openai and load_dotenv from dotend, I have used
+load_dotenv to assign to OpenAI API key the environment variable taken
+from the operating system, the environment variable, storing
+my API key.
+Then I have generated a response using openai.completion.create
+I have chosen the text Davinci model
+and I have written a prompt "list the main cast of the movie
+Batman by Tim Burton", temperature is set as default
+1 and max tokens, I have increased the value to 1000 as I
+can't really predict how long the response from the model
+will be.
+And then I print the response, using the zero index in choices.
+I'm going to move to command prompt and run this file.
+And here is the response from the model.
+So with this prompt, I have received a numbered list
+with the actor and character, with the 10 main characters,
+the main members of the cast, instead of using a zero shot
+approach, I'm going to use a few-shot approach now and going
+back to my script, I'm going to edit the prompt. In my
+practice,
+I went above and beyond.
+I have clearly marked the two examples.
+So I have created a multi line variable for the prompt using
+the three quotation marks.
+We have the "list the main cast of the movie Batman by Tim
+Burton".
+Here is two examples of how to generate each item in the list.
+Example one, Jack Nicholson, the Joker with a brief
+description of the character and then example two Michael
+Keaton, Batman and a brief description of the character.
+I'm going to save and see how the list generation
+will change based on the example that I have now provided.
+So I'm going to run again prompt-practice.py and see how the AI
+model response will change.
+Now, I have received a new list.
+It's no longer a numbered list.
+It's following my examples and it's creating the list
+with the actor and the character and a brief description.
+Feel free to read through the response, pausing the video
+and resume it when you're done.
+Congratulations on your practice.
+In the next task, we're going to data enrich the movie
+collection of the user with OpenAI using what
+we have learned so far.
 See you there!
