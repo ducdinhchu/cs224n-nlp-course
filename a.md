@@ -1,61 +1,47 @@
-Welcome back in this chapter.
-We are going to create a plot for the average trip duration,
-and we want that information for our user type.
-So we have a dimension called user type, and we have
-a measure called trip Duration.
-So that's all we really need to use.
-Let's click on this blank new worksheet and double click
-on it and call it trip duration.
-It's time to change the title.
-Do average trip duration and align it.
-Keep it in the center.
-Now we want the trip duration for different user tax, so all
-they really need to do is drag the user Type two columns
-and the trip duration measure two rows by the fort.
-If the Rose shows you that it's looking at the sum
-of preparation, then you can just click on this and go
-to measure and change it from some to average.
-And now it shows you that the average trip duration
-for the user type customer is 4839 An average trip duration
-for a user type subscriber is 714 Now we can use
-another dimension to see how the distribution of these
-two categories might be so we can look at gender.
-And if I drag and drop this gender, the dimension on color.
-So let's drag and drop this on color.
-You will see that we get a legend on the right side.
-It's 01 and 20 is for unspecified gender.
-One is for male and two is for female.
-And now we can see on our previous plot that the distribution
-across genders is much more even for our subscribers.
-But not so even in our customers user time, which
-is dominated by male customers as far as the average
-population is concerned.
-Great. Now we can do something similar for our start station
-and end stations.
-Let's go to end stations and what we want to do is maybe use
-different colors for these different stations.
-And the intensity of the color might be different
-for different values of how many times those stations were
-the end stations for how many trips.
-And we already know that the number of records gives us
-the count count of the rose so we can simply drag and drop
-this to color.
-That will add a legend, and it will show you different color
-for different station because different stations have
-different values of number of records and the higher value is
-darker.
-We can do the same thing for our start stations as well.
-So again we'll drag and drop the number of records want
-to color.
-And that will add the legend as well as if, uh, change
-the color for all the different plots.
-All right, great.
-So now that we added the end station data, the start station
-data, let's take a look at the most popular start stations
-with most common end stations.
-Just like we categorized and looked at the distribution
-of average tribulation across customer and subscribers.
-And look at the distribution across gender.
-Well, basically do the same thing for our start stations
-and stations.
-Let's do that in the next chapter.
+Welcome back in this chapter, we're going to take a look
+at the distribution of most common end stations with the most
+popular start stations.
+So let's create a new work cheap, and we're looking at most
+popular start stations so that dimension already exists
+for a start stations.
+We just need to drag and drop it in columns, and then all we
+really need to do is drag and drop the number of records
+on Rose.
+Now this will display all the stations that we have,
+but we are looking at only the most popular ones.
+So let's create a filter.
+We'll drag and drop the start station names on the filter
+and go to condition by field Number of records.
+Some should be greater than equal to 5000.
+Now we have these six starts stations, which have records
+more than 65,000 records.
+Great, and we also want to take a look at the distribution
+of the most common end stations for these popular start
+stations.
+So let's drag and drop the end station name on color.
+Now, W will ask you if you want to add all the entries, all
+the members here and the recommended Maximum for this shelf
+is 20. So we actually only want to take a look at the most
+common ones May be like the most common 45 once.
+So we'll click on filter and then we'll add in the ladder
+filter condition by field number of records some greater
+than equal to 5000.
+Great. Now you will see a legend is added to this plot where
+you have the end station names, the different colors.
+And of course, you have the start station name with their
+number of records here.
+So, for example, if you look at this entry right here, this
+is showing us and station uh, name a start station name
+and the number of records for this start station which ends
+in the end station.
+Dinner it by the scholar.
+Great. Let's also write the title for this plot.
+Most popular start inspections and also renamed the sheep.
+So most well, making this contact start sections.
+He only have seen these in the start station plot here
+plotted on the map.
+Great. So now we have the distribution of the common
+and stations for the most popular star stations.
+Now, in the next chapter, we are going to take a look at the,
+uh, start time and stop time for our customers as well
+as subscribers.
