@@ -1,49 +1,74 @@
-Welcome back in this chapter.
-We are going to take a look at the behavior of our customers
-and subscribers, uh, with respect to the starting and ending
-time of their trips on city bikes.
-So let's create a new worksheet, and we're looking
-at the start time.
-So let's add that to our column, and we are looking
-at the total records that we have for those start times.
-So right now the column is by default.
-It's showing just the year.
-So what we want to do is select per hour, and that will give
-us the A number of records for different hours during the day.
-And you can see that at eight AM the records are the highest,
-and then we have at 17, which is 5 p.m. And 6 18, which is
-six PM These are also pretty high.
-Great. Now we want to use our user type and see how this data
-might differ for our customers and for subscribers.
-So let's drag and drop this on color, and it will give us
-a legend here for customer and subscriber, two different user
-doubts that we have and the data here.
-So in this part, you can see that your subscribers are very
-active.
-They're starting the trips at eight AM and they're starting
-the trips at 5 p.m. And 6 p.m.
-But your customers actually use the city bikes mostly
-during the day in between those beats that we have.
-So around two PM one PM and so on.
-Great. So this is what are the title for this?
-This is the start times for our different user types.
-And let's actually duplicate this.
-It's a stark time.
-Duplicate this and create any times.
-And we need to change the scholars from start time.
-Two our stock time.
-So when our crib stops and again, we need to change it
-from here to power.
-Okay, great.
-So now our trips normally stop at eight.
-At least these are the most common times at eight AM and then
-at 6 p.m. And Cyprien.
-But this is for subscribers.
-For our customers, the common, um, hours of the day are
-3 p.m. or maybe one bm and 2 p.m. And so on.
-Great. So we understand a bit of behavior of our customers
-and subscribers, and now that we have all the plots that
-we wanted to create all the sheets that we wanted to create.
-We are going to create one dashboard visualization with all
-of them.
-Let's do that in the next chapter.
+Welcome back now that we have created all the sheets that
+we wanted.
+Now it's time to put everything together in one visualization,
+which can actually be shared with other people.
+So in order to do that, well, let me just correct the title
+here we will create instead of creating a new sheep.
+This time we will create a new dashboard.
+So take on this button and let's give this a name by double
+clicking on it.
+So this is for for 2018, and by the fourth, the size
+of this dashboard might not be set to automatic.
+So click here, click on the range and set it to automatic.
+This way, the dashboard cameras will align itself
+to the space that you have available on that particular
+screen.
+And now all we really need to do is just check on these, uh,
+and add them to your dashboard, either by double clicking
+on these sheets or by dragging and dropping them here.
+So start by that.
+Just double click on this.
+So this is the most popular end stations on a map.
+Double click on the stock stations, so most popular end
+stations and start stations both are added.
+The legend is also shown here.
+Let's click on the trip duration, So double click on this.
+So this shows you the average trip duration and for customers
+and subscribers.
+And you also have distribution across gender that you can see
+with the help of these colors.
+Double click on the start popular sheep.
+So these are the most popular start stations, and we are also
+displaying the end stations on this plot and then double
+click on the start time in the booklet on the end time.
+Now, you may or may not like the default configuration so you
+can drag and drop any of these plots anywhere.
+And, uh, you know, make it work for you.
+So what I want is this is fine, but I think the a start time,
+I'm going to drag and drop it somewhere here, and I'll do
+the same thing for the end time for different user types.
+So, uh, dragon, drop it here.
+Yeah, actually, I drag and drop it here, and let's also drag
+and decrease the size of these maps, So just click here
+and decrease the science and take care and decrease
+the science.
+And let's actually decrease the size of these maps a little
+more. So I'll take the end time for user types on the right
+side. Yes, this is fine.
+And I'll take the most popular start stations at this
+starting something like this.
+And maybe I can now bring this end time for user types here.
+That department.
+All right, so this is this looks fine.
+We can reduce the size of average population.
+Okay? And you'd notice that tableau automatically adds all
+the religions as well.
+The great.
+That's pretty much all you need to know to create a dashboard
+for our city bike database.
+A data set.
+And now, if you want to save this, you will have to publish
+it because we're using type of public.
+And once you do that, let's say I go fire and say to tap
+the public.
+Then it will ask you to log into your tableau account,
+and your visualization will be published to that account.
+Right? Otherwise, you will not be able to save it locally.
+Great. So I hope this gives you some insight into using
+tableau for data visualization, and there is a bunch
+of different things, and that's possible with tableau.
+It's extremely intuitive and extremely easy to use to get
+some data analysis and, uh, to get some insights out of your
+data, and hopefully this will help you achieve
+some meaningful results with your own data sets.
+Thank you for participating.
