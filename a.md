@@ -1,47 +1,49 @@
-Welcome back in this chapter, we're going to take a look
-at the distribution of most common end stations with the most
-popular start stations.
-So let's create a new work cheap, and we're looking at most
-popular start stations so that dimension already exists
-for a start stations.
-We just need to drag and drop it in columns, and then all we
-really need to do is drag and drop the number of records
-on Rose.
-Now this will display all the stations that we have,
-but we are looking at only the most popular ones.
-So let's create a filter.
-We'll drag and drop the start station names on the filter
-and go to condition by field Number of records.
-Some should be greater than equal to 5000.
-Now we have these six starts stations, which have records
-more than 65,000 records.
-Great, and we also want to take a look at the distribution
-of the most common end stations for these popular start
-stations.
-So let's drag and drop the end station name on color.
-Now, W will ask you if you want to add all the entries, all
-the members here and the recommended Maximum for this shelf
-is 20. So we actually only want to take a look at the most
-common ones May be like the most common 45 once.
-So we'll click on filter and then we'll add in the ladder
-filter condition by field number of records some greater
-than equal to 5000.
-Great. Now you will see a legend is added to this plot where
-you have the end station names, the different colors.
-And of course, you have the start station name with their
-number of records here.
-So, for example, if you look at this entry right here, this
-is showing us and station uh, name a start station name
-and the number of records for this start station which ends
-in the end station.
-Dinner it by the scholar.
-Great. Let's also write the title for this plot.
-Most popular start inspections and also renamed the sheep.
-So most well, making this contact start sections.
-He only have seen these in the start station plot here
-plotted on the map.
-Great. So now we have the distribution of the common
-and stations for the most popular star stations.
-Now, in the next chapter, we are going to take a look at the,
-uh, start time and stop time for our customers as well
-as subscribers.
+Welcome back in this chapter.
+We are going to take a look at the behavior of our customers
+and subscribers, uh, with respect to the starting and ending
+time of their trips on city bikes.
+So let's create a new worksheet, and we're looking
+at the start time.
+So let's add that to our column, and we are looking
+at the total records that we have for those start times.
+So right now the column is by default.
+It's showing just the year.
+So what we want to do is select per hour, and that will give
+us the A number of records for different hours during the day.
+And you can see that at eight AM the records are the highest,
+and then we have at 17, which is 5 p.m. And 6 18, which is
+six PM These are also pretty high.
+Great. Now we want to use our user type and see how this data
+might differ for our customers and for subscribers.
+So let's drag and drop this on color, and it will give us
+a legend here for customer and subscriber, two different user
+doubts that we have and the data here.
+So in this part, you can see that your subscribers are very
+active.
+They're starting the trips at eight AM and they're starting
+the trips at 5 p.m. And 6 p.m.
+But your customers actually use the city bikes mostly
+during the day in between those beats that we have.
+So around two PM one PM and so on.
+Great. So this is what are the title for this?
+This is the start times for our different user types.
+And let's actually duplicate this.
+It's a stark time.
+Duplicate this and create any times.
+And we need to change the scholars from start time.
+Two our stock time.
+So when our crib stops and again, we need to change it
+from here to power.
+Okay, great.
+So now our trips normally stop at eight.
+At least these are the most common times at eight AM and then
+at 6 p.m. And Cyprien.
+But this is for subscribers.
+For our customers, the common, um, hours of the day are
+3 p.m. or maybe one bm and 2 p.m. And so on.
+Great. So we understand a bit of behavior of our customers
+and subscribers, and now that we have all the plots that
+we wanted to create all the sheets that we wanted to create.
+We are going to create one dashboard visualization with all
+of them.
+Let's do that in the next chapter.
