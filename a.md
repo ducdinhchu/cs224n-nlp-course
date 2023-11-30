@@ -1,76 +1,56 @@
 Welcome back.
-This is the first task of the 'Create a Story in Tableau Public'
-guided project.
-In this task, you will learn how to connect a data source
-and create line charts.
-Tableau is a robust business intelligence platform
-that turns any kind of data from almost any system
-into actionable insights.
-While most of the Tableau products are scalable and require
-a role-based licensing, Tableau Public is a data
-visualization platform for data enthusiasts like you,
-and it is free.
-So let's jump right into it.
-Launch Tableau Public from your Rhyme virtual desktop.
-Next, we're going to download the data set. So click
-on Simple data sets in the Discover panel on the right
-and you will be redirected
-to Tableau Public resources page.
-Once the page is loaded, scroll down and find the data set
-for the Tour de France statistics.
-Click on the file and download it.
-Once I have the file, I'm going back to Tableau Public
-and then select Microsoft Exel
-from the Connect panel on the left, and select
-the folder where you just downloaded 
-the file and connect to that file. 
-Alright. Next, let's use the data interpreter to clean up the data set.
-And, next, click on had a new sheet and we're going
-to start building the line charts.
-Feel free to pause the video right now to 
-complete this part of the task.
-Once you connected to the data set, resumed the video.
-Alright, now we're going to create our first line chart.
-This line chart will show the number of race stages
-for each year the race took place.
-So, select 'year' from the tables and drop it into the columns
-shelf, and then select 'number of stages' and drop it onto the
-rows. Now let's add a trend line.
-Click on the chart and then select 'trend lines' then 'show trend lines'.
-And one more thing -
-we're going to add drop lines to the chart.
-So, right click on the chart, select 'drop lines' and then
-'show drop lines'.
-Next, right click on the chart again.
-Select drop lines and this time
-choose 'edit drop lines'. From the 'drop when' select 'only when
-selected' and leave 'drop to' and 'labels', as is. Click OK.
-Now, when you hover over the chart and click on a point
-on the chart, it will show drop lines to the year
-and to the number of stages.
-Now, let's practice. Pause the video and create a line chart that
-shows the race distance for each year the race took place.
-Once you're done with it, continue with the video to see my
-solution.
-Good to have you back.
-So here is my solution.
-I created the chart and added drop lines.
-Now what I want to do is add forecast and the trend line
-to the chart.
-So switch to analytics tab and then select 'forecast'
-from the model panel.
-And, drop it onto the view. Next select 'trend line'
-and drop it onto the view.
+In the previous task, we learned how to connect to a data
+source and clean up data using the data interpreter,
+and created to line charts.
+In this task, we're going to create a packed bubbles chart
+and a treemap.
+But before we begin, I want you to rename the sheets that
+we had created in the previous task and save you work
+to Tableau Public.
+Feel free to pause the video right now to complete this part
+of the task. Once you're done, resume the video. 
+Alight, so let's begin by adding 
+a new sheet to the workbook and renaming it
+to 'countries'.
+Next, select 'Entrants' from measures and drop it
+onto the columns.
+Then select 'Finishers' and drop it onto the rows.
+Next, select 'Winners' nationality' from dimensions and
+drop it onto the view. Then click on 'Show me' and select
+'packed bubbles' chart.
+Now let's switch 'SUM(Finishers)' date pill 
+from color to detail, and 
+add 'Winners' Nationality'
+to the color marks card.
+Okay, this looks good.
+One more thing.
+Let's remove 'Results Voided' from the view. 
+Right click on the bubble and then select 'exclude'.
+Feel free to pause the video right now to complete this part
+of the task.
+Alright. In the second part of this task we are going
+to create a treemap.
+So let's add another sheet to the workbook and rename it
+tho 'Winners'.
+Next, select 'Winners' from the dimensions pane and drop it
+onto the columns shelf, and then select 'Winners'.
+average speed' from the measures and drop it onto the rows.
+Then click on 'Show me' and select 'Treemap' chart.
+Okay, now let's right click
+on the voided results, select 'exclude', and select 'Winners'
+Nationality' and drop it onto the color.
 One last thing.
-right click on the chart, select 'forecast' then 'forecast options'
-and in forecast model options
-change it from automatic to automatic without seasonality.
-Click OK, and we're done.
-Great work so far!
-Now, let's summarize.
-In this task, we learned how to connect a data source,
-cleanup data using the data interpreter, and created two line
-charts with drop lines, trend lines and forecast cone.
-In the next task will pick up where we left off and we
-will build a packed bubble chart.
-See you in the next task!
+Let's change SUM(Winners' Average Speed)
+to
+attribute.
+Now, when I hover over a place in the treemap,
+I can actually see winners' nationality, name and average speed.
+Feel free to pause the video right now to complete this part
+of the task. Once you are done, resume the video.
+ Good to have you back.
+So let's summarize what we've learned in this task.
+In this task, we've created a packed bubble chart
+and a treemap, and we've also practiced adding data pills
+to the Marks Card. In the next task, we're going
+to create dashboards for each of these charts.
+See in the next task!
